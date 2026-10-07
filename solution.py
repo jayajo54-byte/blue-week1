@@ -25,7 +25,7 @@ print(f"정제: {before}건 → {len(df)}건")
 
 # 3) 집계
 res = (
-    df.groupby("센터")["도착시간_분"]
+    df.groupby("유형")["도착시간_분"]
     .agg(건수="count", 평균="mean", 최대="max")
     .round(2)
     .reset_index()
