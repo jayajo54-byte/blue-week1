@@ -37,4 +37,4 @@ print(res)
 res.to_csv("결과_유형별.csv", index=False, encoding="utf-8-sig")
 with open("result.json", "w", encoding="utf-8") as f:
     json.dump(res.to_dict(orient="records"), f, ensure_ascii=False, indent=2)
-print("완료: 결과_센터별.csv, result.json")
+print("완료: 결과_유형별.csv, result.json")
