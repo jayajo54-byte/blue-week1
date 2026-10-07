@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>센터별 도착시간</title>
+<style>
+  body { font-family: system-ui, sans-serif; max-width: 720px; margin: 40px auto; padding: 0 16px; }
+  table { width: 100%; border-collapse: collapse; margin-top: 16px; }
+  th, td { border-bottom: 1px solid #ddd; padding: 8px; text-align: left; }
+  .bar { background: #2563eb; height: 14px; border-radius: 3px; }
+</style>
+</head>
+<body>
+  <h1>센터별 평균 도착시간</h1>
+  <p>result.json을 읽어서 표로 보여주는 연습 페이지</p>
+  <table>
+    <thead><tr><th>센터</th><th>건수</th><th>평균(분)</th><th></th></tr></thead>
+    <tbody id="rows"></tbody>
+  </table>
+<script>
+  fetch("result.json")
+    .then(r => r.json())
+    .then(data => {
+      const max = Math.max(...data.map(d => d["평균"]));
+      document.getElementById("rows").innerHTML = data.map(d => `
+        <tr>
+          <td>${d["센터"]}</td><td>${d["건수"]}</td><td>${d["평균"]}</td>
+          <td style="width:40%"><div class="bar" style="width:${d["평균"] / max * 100}%"></div></td>
+        </tr>`).join("");
+    })
+    .catch(e => document.body.insertAdjacentHTML("beforeend", `<p style="color:red">불러오기 실패: ${e}</p>`));
+</script>
+</body>
+</html>
