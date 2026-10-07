@@ -34,7 +34,7 @@ res = (
 print(res)
 
 # 4) 출력: 제출용 CSV + 웹페이지용 JSON
-res.to_csv("결과_센터별.csv", index=False, encoding="utf-8-sig")
+res.to_csv("결과_유형별.csv", index=False, encoding="utf-8-sig")
 with open("result.json", "w", encoding="utf-8") as f:
     json.dump(res.to_dict(orient="records"), f, ensure_ascii=False, indent=2)
 print("완료: 결과_센터별.csv, result.json")
