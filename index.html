@@ -15,7 +15,7 @@
   <h1>센터별 평균 도착시간</h1>
   <p>result.json을 읽어서 표로 보여주는 연습 페이지</p>
   <table>
-    <thead><tr><th>센터</th><th>건수</th><th>평균(분)</th><th></th></tr></thead>
+    <thead><tr><th>유형</th><th>건수</th><th>평균(분)</th><th></th></tr></thead>
     <tbody id="rows"></tbody>
   </table>
 <script>
@@ -25,7 +25,7 @@
       const max = Math.max(...data.map(d => d["평균"]));
       document.getElementById("rows").innerHTML = data.map(d => `
         <tr>
-          <td>${d["센터"]}</td><td>${d["건수"]}</td><td>${d["평균"]}</td>
+          <td>${d["유형"]}</td><td>${d["건수"]}</td><td>${d["평균"]}</td>
           <td style="width:40%"><div class="bar" style="width:${d["평균"] / max * 100}%"></div></td>
         </tr>`).join("");
     })
